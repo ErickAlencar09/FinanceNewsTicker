@@ -12,7 +12,7 @@ namespace FinanceNewsTicker.Services
             _configuration = configuration;
         }
 
-        public FinanceNews GetFinanceNews()
+        public FinanceNews GetFinanceNews(int offset)
         {
             //Getting api key
             string apiKey = _configuration.GetValue<string>("API_KEY");
@@ -22,6 +22,7 @@ namespace FinanceNewsTicker.Services
             using(var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(apiUrl);
+                var parameters = string.Format("?apiKey={0}&offset={1}&date={2}&sort={3}", apiKey , offset, "today", "desc");
                 HttpResponseMessage response = client.GetAsync($"?apikey={apiKey}").Result;
 
                 if (response.IsSuccessStatusCode)

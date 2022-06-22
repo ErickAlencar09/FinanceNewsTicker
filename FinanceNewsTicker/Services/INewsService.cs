@@ -4,6 +4,6 @@ namespace FinanceNewsTicker.Services
 {
     public interface INewsService
     {
-        FinanceNews GetFinanceNews();
+        FinanceNews GetFinanceNews(int offset);
     }
 }

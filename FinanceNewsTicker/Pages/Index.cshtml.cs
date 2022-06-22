@@ -19,8 +19,13 @@ namespace FinanceNewsTicker.Pages
 
         public void OnGet()
         {
-           news = _newsService.GetFinanceNews();
+           news = _newsService.GetFinanceNews(0);
 
+        }
+
+        public void OnGetLoadMoreNews(int offset)
+        {
+            news = _newsService.GetFinanceNews(offset);
         }
     }
 }
